@@ -7,7 +7,7 @@
     <dict>
       <key>PayloadType</key><string>com.google.Chrome</string>
       <key>PayloadIdentifier</key><string>it.allfit.technogymsync.chrome</string>
-      <key>PayloadUUID</key><string>EEE2423E-DF6F-4F1C-A7D9-FF95A92A49B9</string>
+      <key>PayloadUUID</key><string>54ADA444-61F2-4849-A63B-FD198CEE392E</string>
       <key>PayloadVersion</key><integer>1</integer>
       <key>PayloadDisplayName</key><string>Chrome - Sync WIC verso Technogym</string>
       <key>ExtensionInstallForcelist</key>
@@ -18,11 +18,20 @@
       <array>
         <string>omhjkdfnkanejanndbdimcilimhbkphn</string>
       </array>
+      <key>ExtensionSettings</key>
+      <dict>
+        <key>omhjkdfnkanejanndbdimcilimhbkphn</key>
+        <dict>
+          <key>installation_mode</key><string>force_installed</string>
+          <key>update_url</key><string>https://raw.githubusercontent.com/ilGenu/technogym-sync-dist/main/update.xml</string>
+          <key>toolbar_pin</key><string>force_pinned</string>
+        </dict>
+      </dict>
     </dict>
     <dict>
       <key>PayloadType</key><string>com.google.Chrome.extensions.omhjkdfnkanejanndbdimcilimhbkphn</string>
       <key>PayloadIdentifier</key><string>it.allfit.technogymsync.config</string>
-      <key>PayloadUUID</key><string>9CACE155-9441-475C-BD82-8D7FDDF810C5</string>
+      <key>PayloadUUID</key><string>9A091EB4-4C21-4B8C-ACA6-52DEE27C1FFF</string>
       <key>PayloadVersion</key><integer>1</integer>
       <key>PayloadDisplayName</key><string>Configurazione Sync WIC verso Technogym</string>
       <key>soloLettura</key><true/>
@@ -35,7 +44,7 @@
   <key>PayloadOrganization</key><string>All Fit</string>
   <key>PayloadIdentifier</key><string>it.allfit.technogymsync</string>
   <key>PayloadType</key><string>Configuration</string>
-  <key>PayloadUUID</key><string>2EE3162A-1F18-42BC-8CA9-42212BF4A19F</string>
+  <key>PayloadUUID</key><string>5B27ED66-F6C2-40DB-9DD2-EFB503FF8E49</string>
   <key>PayloadVersion</key><integer>1</integer>
   <key>PayloadScope</key><string>System</string>
   <key>PayloadRemovalDisallowed</key><false/>
