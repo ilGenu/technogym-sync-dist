@@ -6,9 +6,11 @@
     "dryRun": false,
     "stepTimeoutMs": 20000,
     "autoDetectSale": true,
+    "onlyMappedProducts": true,
     "panelMode": "sidepanel",
     "netLogEnabled": true,
-    "netLogMax": 60
+    "netLogMax": 60,
+    "syncEnabled": true
   },
   "wic": {
     "detect": {
@@ -34,13 +36,14 @@
       ],
       "emailPaths": [],
       "productPaths": [],
-      "customerPaths": []
+      "customerPaths": [],
+      "edited": false
     },
     "catalog": {
-      "url": "https://new.wellness.incloud.it/WicConfigurazioneListini",
+      "capturedAt": 1787265081125,
       "itemCss": ".MuiTreeItem-label",
       "nameCss": "",
-      "capturedAt": 1787265081125
+      "url": "https://new.wellness.incloud.it/WicConfigurazioneListini"
     }
   },
   "mywellness": {
@@ -61,146 +64,146 @@
       ]
     },
     "catalog": {
-      "url": "",
+      "capturedAt": null,
       "itemCss": "",
       "nameCss": "",
-      "capturedAt": null
+      "url": ""
     },
     "recipe": [
       {
+        "action": "navigate",
         "id": "open",
         "label": "Apro MyWellness",
-        "action": "navigate",
         "value": "https://pronext.mywellness.com/home"
       },
       {
+        "action": "requireLogin",
         "id": "login",
-        "label": "Verifico il login",
-        "action": "requireLogin"
+        "label": "Verifico il login"
       },
       {
+        "action": "fill",
         "id": "search-fill",
         "label": "Cerco il cliente per email",
-        "action": "fill",
-        "value": "{{email}}",
         "target": {
           "css": "#quick-search"
-        }
+        },
+        "value": "{{email}}"
       },
       {
+        "action": "pressKey",
         "id": "search-submit",
         "label": "Avvio la ricerca",
-        "action": "pressKey",
-        "value": "Enter",
         "target": {
           "css": "#quick-search"
-        }
+        },
+        "value": "Enter"
       },
       {
+        "action": "waitFor",
         "id": "search-wait",
         "label": "Attendo i risultati",
-        "action": "waitFor",
         "target": {
           "textContains": "risultati per"
         }
       },
       {
+        "action": "assertCount",
         "id": "search-count",
         "label": "Controllo che il cliente sia uno solo",
-        "action": "assertCount",
-        "value": 1,
         "target": {
           "css": "[role=\"button\"].MuiListItem-root:not(.navigation-menu *)"
-        }
+        },
+        "value": 1
       },
       {
+        "action": "click",
         "id": "search-pick",
         "label": "Apro la scheda del cliente",
-        "action": "click",
         "target": {
           "css": "[role=\"button\"].MuiListItem-root:not(.navigation-menu *)"
         }
       },
       {
+        "action": "assertText",
         "id": "verify-person",
         "label": "Conferma email sulla scheda (se mostrata)",
-        "action": "assertText",
         "optional": true,
-        "timeoutMs": 6000,
         "target": {
           "textContains": "{{email}}"
-        }
+        },
+        "timeoutMs": 6000
       },
       {
+        "action": "click",
         "id": "open-purchases",
         "label": "Apro la sezione Acquisti",
-        "action": "click",
         "target": {
           "text": "acquisti"
         }
       },
       {
+        "action": "click",
         "id": "add-purchase",
         "label": "Nuovo acquisto (+)",
-        "action": "click",
         "target": {
+          "css": ".MuiIconButton-root",
           "near": {
             "text": "acquisti",
             "up": 1
-          },
-          "css": ".MuiIconButton-root"
+          }
         }
       },
       {
+        "action": "waitFor",
         "id": "shop-wait",
         "label": "Attendo la schermata prodotti",
-        "action": "waitFor",
         "target": {
           "textContains": "vendi prodotti"
         }
       },
       {
+        "action": "fill",
         "id": "product-search",
         "label": "Filtro il listino",
-        "action": "fill",
         "optional": true,
-        "value": "{{mwProduct}}",
         "target": {
           "css": ".MuiDialog-root input[placeholder=\"Cerca\"]"
-        }
+        },
+        "value": "{{mwProduct}}"
       },
       {
-        "id": "product-pick",
-        "label": "Seleziono il prodotto",
         "action": "pickFromList",
-        "value": "{{mwProduct}}",
-        "target": {
-          "css": ".MuiDialog-root .MuiGrid-item.MuiGrid-grid-xs-4"
-        },
+        "attempts": 3,
         "confirm": {
           "text": "attiva"
         },
-        "attempts": 3
+        "id": "product-pick",
+        "label": "Seleziono il prodotto",
+        "target": {
+          "css": ".MuiDialog-root .MuiGrid-item.MuiGrid-grid-xs-4"
+        },
+        "value": "{{mwProduct}}"
       },
       {
+        "action": "waitFor",
         "id": "check-zero",
         "label": "Controllo che il carrello sia a 0 €",
-        "action": "waitFor",
-        "timeoutMs": 8000,
         "target": {
           "text": "attiva"
-        }
+        },
+        "timeoutMs": 8000
       },
       {
-        "id": "finalize",
-        "label": "Completo la vendita a 0 €",
         "action": "click",
         "confirmStep": true,
+        "id": "finalize",
+        "label": "Completo la vendita a 0 €",
         "target": {
           "anyOf": [
             {
-              "text": "attiva",
-              "tag": "button"
+              "tag": "button",
+              "text": "attiva"
             },
             {
               "text": "attiva"
@@ -209,9 +212,9 @@
         }
       },
       {
+        "action": "waitGone",
         "id": "verify",
         "label": "Verifico l'esito",
-        "action": "waitGone",
         "skipOnDryRun": true,
         "target": {
           "textContains": "vendi prodotti"
@@ -221,47 +224,40 @@
   },
   "mappings": [
     {
-      "wicName": "00 Set Up Base (BIA+MOB+FOR)",
-      "mwName": "01 Checkup Base (BIA, Mobilità, Forza)",
       "confirmed": true,
+      "mwName": "01 Checkup Base (BIA, Mobilità, Forza)",
       "score": 0.6453877551020407,
-      "updatedAt": 1787265081125
+      "updatedAt": 1787265081125,
+      "wicName": "00 Set Up Base (BIA+MOB+FOR)"
     },
     {
-      "wicName": "01 Check Up Base (BIA+MOB+FOR)",
-      "mwName": "01 Checkup Base (BIA, Mobilità, Forza)",
       "confirmed": true,
+      "mwName": "01 Checkup Base (BIA, Mobilità, Forza)",
       "score": 0.8997142857142856,
-      "updatedAt": 1787265081125
+      "updatedAt": 1787265081125,
+      "wicName": "01 Check Up Base (BIA+MOB+FOR)"
     },
     {
-      "wicName": "02 Check Up Pro (BASE+CARDIO)",
+      "confirmed": true,
       "mwName": "02 Checkup Pro (BIA, Mobilità, Forza, Cardio)",
-      "confirmed": false,
       "score": 0.664530612244898,
-      "updatedAt": 1787265081125
+      "updatedAt": 1787265253462,
+      "wicName": "02 Check Up Pro (BASE+CARDIO)"
     },
     {
-      "wicName": "03 Check Up Ultra (Completo)",
+      "confirmed": true,
       "mwName": "03 Checkup Ultra (tutti i test)",
-      "confirmed": false,
       "score": 0.6331428571428571,
-      "updatedAt": 1787265081125
+      "updatedAt": 1787265256295,
+      "wicName": "03 Check Up Ultra (Completo)"
     },
     {
-      "wicName": "10 Personal - 60'",
-      "mwName": "10 Personal 60'",
+      "askAlways": true,
       "confirmed": false,
-      "score": 1,
-      "updatedAt": 1787265081125
-    },
-    {
-      "wicName": "04 Check Up (singolo test)",
       "mwName": "",
-      "confirmed": false,
       "score": 0,
       "updatedAt": 1787265081125,
-      "askAlways": true
+      "wicName": "04 Check Up (singolo test)"
     }
   ],
   "catalogs": {
