@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>PayloadContent</key>
+  <array>
+    <dict>
+      <key>PayloadType</key><string>com.google.Chrome</string>
+      <key>PayloadIdentifier</key><string>it.allfit.technogymsync.chrome</string>
+      <key>PayloadUUID</key><string>AF537CBD-7757-43EA-9A5B-26A23DE04A65</string>
+      <key>PayloadVersion</key><integer>1</integer>
+      <key>PayloadDisplayName</key><string>Chrome - Sync WIC verso Technogym</string>
+      <key>ExtensionInstallForcelist</key>
+      <array>
+        <string>omhjkdfnkanejanndbdimcilimhbkphn;https://raw.githubusercontent.com/ilGenu/technogym-sync-dist/main/update.xml</string>
+      </array>
+    </dict>
+    <dict>
+      <key>PayloadType</key><string>com.google.Chrome.extensions.omhjkdfnkanejanndbdimcilimhbkphn</string>
+      <key>PayloadIdentifier</key><string>it.allfit.technogymsync.config</string>
+      <key>PayloadUUID</key><string>6BECAB43-B4E9-46EC-8CCC-7C7001AC4FD4</string>
+      <key>PayloadVersion</key><integer>1</integer>
+      <key>PayloadDisplayName</key><string>Configurazione Sync WIC verso Technogym</string>
+      <key>soloLettura</key><true/>
+      <key>configurazioneUrl</key><string>https://raw.githubusercontent.com/ilGenu/technogym-sync-dist/main/configurazione.json</string>
+      <key>configurazione</key><string></string>
+    </dict>
+  </array>
+  <key>PayloadDisplayName</key><string>Sync WIC verso Technogym (All Fit)</string>
+  <key>PayloadDescription</key><string>Installa e mantiene aggiornata l'estensione che sincronizza le vendite di Wellness in Cloud con MyWellness.</string>
+  <key>PayloadOrganization</key><string>All Fit</string>
+  <key>PayloadIdentifier</key><string>it.allfit.technogymsync</string>
+  <key>PayloadType</key><string>Configuration</string>
+  <key>PayloadUUID</key><string>41C86BE5-1A99-482F-98CE-07D5D9765DB4</string>
+  <key>PayloadVersion</key><integer>1</integer>
+  <key>PayloadScope</key><string>System</string>
+  <key>PayloadRemovalDisallowed</key><false/>
+</dict>
+</plist>

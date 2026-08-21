@@ -1,0 +1,15 @@
+Windows Registry Editor Version 5.00
+
+; Installa l'estensione su questo computer e la tiene aggiornata.
+; Va eseguito come amministratore (tasto destro > Unisci, oppure "Esegui come
+; amministratore"). Dopo, riavviare Chrome.
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\ExtensionInstallForcelist]
+"1"="omhjkdfnkanejanndbdimcilimhbkphn;https://raw.githubusercontent.com/ilGenu/technogym-sync-dist/main/update.xml"
+
+; Configurazione imposta dall'amministratore: sulla postazione le impostazioni
+; sono di sola lettura.
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\3rdparty\extensions\omhjkdfnkanejanndbdimcilimhbkphn\policy]
+"soloLettura"=dword:00000001
+"configurazioneUrl"="https://raw.githubusercontent.com/ilGenu/technogym-sync-dist/main/configurazione.json"
+"configurazione"=""
