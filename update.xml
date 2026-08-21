@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Chrome interroga questo file per sapere se esiste una versione più recente.
+     Per aggiornare tutte le postazioni: alza "version" in manifest.json,
+     rilancia pacchettizza.sh e pubblica.sh. -->
+<gupdate xmlns='http://www.google.com/update2/response' protocol='2.0'>
+  <app appid='omhjkdfnkanejanndbdimcilimhbkphn'>
+    <updatecheck codebase='https://raw.githubusercontent.com/ilGenu/technogym-sync-dist/main/technogym-sync.crx' version='0.1.0' />
+  </app>
+</gupdate>
