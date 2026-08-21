@@ -7,18 +7,22 @@
     <dict>
       <key>PayloadType</key><string>com.google.Chrome</string>
       <key>PayloadIdentifier</key><string>it.allfit.technogymsync.chrome</string>
-      <key>PayloadUUID</key><string>D08CF330-A557-4CD4-9DE9-D44E2F3B661E</string>
+      <key>PayloadUUID</key><string>EEE2423E-DF6F-4F1C-A7D9-FF95A92A49B9</string>
       <key>PayloadVersion</key><integer>1</integer>
       <key>PayloadDisplayName</key><string>Chrome - Sync WIC verso Technogym</string>
       <key>ExtensionInstallForcelist</key>
       <array>
         <string>omhjkdfnkanejanndbdimcilimhbkphn;https://raw.githubusercontent.com/ilGenu/technogym-sync-dist/main/update.xml</string>
       </array>
+      <key>ExtensionInstallAllowlist</key>
+      <array>
+        <string>omhjkdfnkanejanndbdimcilimhbkphn</string>
+      </array>
     </dict>
     <dict>
       <key>PayloadType</key><string>com.google.Chrome.extensions.omhjkdfnkanejanndbdimcilimhbkphn</string>
       <key>PayloadIdentifier</key><string>it.allfit.technogymsync.config</string>
-      <key>PayloadUUID</key><string>919AE7D3-EBCD-4C60-AB65-326DB4299E8F</string>
+      <key>PayloadUUID</key><string>9CACE155-9441-475C-BD82-8D7FDDF810C5</string>
       <key>PayloadVersion</key><integer>1</integer>
       <key>PayloadDisplayName</key><string>Configurazione Sync WIC verso Technogym</string>
       <key>soloLettura</key><true/>
@@ -31,7 +35,7 @@
   <key>PayloadOrganization</key><string>All Fit</string>
   <key>PayloadIdentifier</key><string>it.allfit.technogymsync</string>
   <key>PayloadType</key><string>Configuration</string>
-  <key>PayloadUUID</key><string>2FCD14E0-F0C1-4A10-A2DA-EAF3FCEB2C74</string>
+  <key>PayloadUUID</key><string>2EE3162A-1F18-42BC-8CA9-42212BF4A19F</string>
   <key>PayloadVersion</key><integer>1</integer>
   <key>PayloadScope</key><string>System</string>
   <key>PayloadRemovalDisallowed</key><false/>
