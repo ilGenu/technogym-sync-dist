@@ -4,6 +4,6 @@
      rilancia pacchettizza.sh e pubblica.sh. -->
 <gupdate xmlns='http://www.google.com/update2/response' protocol='2.0'>
   <app appid='omhjkdfnkanejanndbdimcilimhbkphn'>
-    <updatecheck codebase='https://all-fit.it/wp-content/uploads/planning/technogym-sync.crx' version='0.3.0' />
+    <updatecheck codebase='https://all-fit.it/wp-content/uploads/planning/technogym-sync.crx' version='0.3.1' />
   </app>
 </gupdate>
