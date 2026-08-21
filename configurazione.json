@@ -1,0 +1,295 @@
+{
+  "version": 1,
+  "options": {
+    "showWorkTab": false,
+    "reuseTab": true,
+    "dryRun": false,
+    "stepTimeoutMs": 20000,
+    "autoDetectSale": true,
+    "panelMode": "sidepanel",
+    "netLogEnabled": true,
+    "netLogMax": 60
+  },
+  "wic": {
+    "detect": {
+      "version": 2,
+      "apiPatterns": [
+        "sales/sales",
+        "sales/editsale"
+      ],
+      "methods": [
+        "POST",
+        "PUT"
+      ],
+      "domTriggers": [
+        {
+          "textContains": "vendita: salvata con successo"
+        },
+        {
+          "textContains": "pagamento: completato con successo"
+        },
+        {
+          "textContains": "riepilogo vendita"
+        }
+      ],
+      "emailPaths": [],
+      "productPaths": [],
+      "customerPaths": []
+    },
+    "catalog": {
+      "url": "https://new.wellness.incloud.it/WicConfigurazioneListini",
+      "itemCss": ".MuiTreeItem-label",
+      "nameCss": "",
+      "capturedAt": 1787265081125
+    }
+  },
+  "mywellness": {
+    "origin": "https://pronext.mywellness.com",
+    "recipeVersion": 4,
+    "startUrl": "https://pronext.mywellness.com/home",
+    "loggedOut": {
+      "anyOf": [
+        {
+          "css": "input[type=\"password\"]"
+        },
+        {
+          "textContains": "accedi"
+        },
+        {
+          "textContains": "sign in"
+        }
+      ]
+    },
+    "catalog": {
+      "url": "",
+      "itemCss": "",
+      "nameCss": "",
+      "capturedAt": null
+    },
+    "recipe": [
+      {
+        "id": "open",
+        "label": "Apro MyWellness",
+        "action": "navigate",
+        "value": "https://pronext.mywellness.com/home"
+      },
+      {
+        "id": "login",
+        "label": "Verifico il login",
+        "action": "requireLogin"
+      },
+      {
+        "id": "search-fill",
+        "label": "Cerco il cliente per email",
+        "action": "fill",
+        "value": "{{email}}",
+        "target": {
+          "css": "#quick-search"
+        }
+      },
+      {
+        "id": "search-submit",
+        "label": "Avvio la ricerca",
+        "action": "pressKey",
+        "value": "Enter",
+        "target": {
+          "css": "#quick-search"
+        }
+      },
+      {
+        "id": "search-wait",
+        "label": "Attendo i risultati",
+        "action": "waitFor",
+        "target": {
+          "textContains": "risultati per"
+        }
+      },
+      {
+        "id": "search-count",
+        "label": "Controllo che il cliente sia uno solo",
+        "action": "assertCount",
+        "value": 1,
+        "target": {
+          "css": "[role=\"button\"].MuiListItem-root:not(.navigation-menu *)"
+        }
+      },
+      {
+        "id": "search-pick",
+        "label": "Apro la scheda del cliente",
+        "action": "click",
+        "target": {
+          "css": "[role=\"button\"].MuiListItem-root:not(.navigation-menu *)"
+        }
+      },
+      {
+        "id": "verify-person",
+        "label": "Conferma email sulla scheda (se mostrata)",
+        "action": "assertText",
+        "optional": true,
+        "timeoutMs": 6000,
+        "target": {
+          "textContains": "{{email}}"
+        }
+      },
+      {
+        "id": "open-purchases",
+        "label": "Apro la sezione Acquisti",
+        "action": "click",
+        "target": {
+          "text": "acquisti"
+        }
+      },
+      {
+        "id": "add-purchase",
+        "label": "Nuovo acquisto (+)",
+        "action": "click",
+        "target": {
+          "near": {
+            "text": "acquisti",
+            "up": 1
+          },
+          "css": ".MuiIconButton-root"
+        }
+      },
+      {
+        "id": "shop-wait",
+        "label": "Attendo la schermata prodotti",
+        "action": "waitFor",
+        "target": {
+          "textContains": "vendi prodotti"
+        }
+      },
+      {
+        "id": "product-search",
+        "label": "Filtro il listino",
+        "action": "fill",
+        "optional": true,
+        "value": "{{mwProduct}}",
+        "target": {
+          "css": ".MuiDialog-root input[placeholder=\"Cerca\"]"
+        }
+      },
+      {
+        "id": "product-pick",
+        "label": "Seleziono il prodotto",
+        "action": "pickFromList",
+        "value": "{{mwProduct}}",
+        "target": {
+          "css": ".MuiDialog-root .MuiGrid-item.MuiGrid-grid-xs-4"
+        },
+        "confirm": {
+          "text": "attiva"
+        },
+        "attempts": 3
+      },
+      {
+        "id": "check-zero",
+        "label": "Controllo che il carrello sia a 0 €",
+        "action": "waitFor",
+        "timeoutMs": 8000,
+        "target": {
+          "text": "attiva"
+        }
+      },
+      {
+        "id": "finalize",
+        "label": "Completo la vendita a 0 €",
+        "action": "click",
+        "confirmStep": true,
+        "target": {
+          "anyOf": [
+            {
+              "text": "attiva",
+              "tag": "button"
+            },
+            {
+              "text": "attiva"
+            }
+          ]
+        }
+      },
+      {
+        "id": "verify",
+        "label": "Verifico l'esito",
+        "action": "waitGone",
+        "skipOnDryRun": true,
+        "target": {
+          "textContains": "vendi prodotti"
+        }
+      }
+    ]
+  },
+  "mappings": [
+    {
+      "wicName": "00 Set Up Base (BIA+MOB+FOR)",
+      "mwName": "01 Checkup Base (BIA, Mobilità, Forza)",
+      "confirmed": true,
+      "score": 0.6453877551020407,
+      "updatedAt": 1787265081125
+    },
+    {
+      "wicName": "01 Check Up Base (BIA+MOB+FOR)",
+      "mwName": "01 Checkup Base (BIA, Mobilità, Forza)",
+      "confirmed": true,
+      "score": 0.8997142857142856,
+      "updatedAt": 1787265081125
+    },
+    {
+      "wicName": "02 Check Up Pro (BASE+CARDIO)",
+      "mwName": "02 Checkup Pro (BIA, Mobilità, Forza, Cardio)",
+      "confirmed": false,
+      "score": 0.664530612244898,
+      "updatedAt": 1787265081125
+    },
+    {
+      "wicName": "03 Check Up Ultra (Completo)",
+      "mwName": "03 Checkup Ultra (tutti i test)",
+      "confirmed": false,
+      "score": 0.6331428571428571,
+      "updatedAt": 1787265081125
+    },
+    {
+      "wicName": "10 Personal - 60'",
+      "mwName": "10 Personal 60'",
+      "confirmed": false,
+      "score": 1,
+      "updatedAt": 1787265081125
+    },
+    {
+      "wicName": "04 Check Up (singolo test)",
+      "mwName": "",
+      "confirmed": false,
+      "score": 0,
+      "updatedAt": 1787265081125,
+      "askAlways": true
+    }
+  ],
+  "catalogs": {
+    "wic": [
+      "00 Set Up Base (BIA+MOB+FOR)",
+      "01 Check Up Base (BIA+MOB+FOR)",
+      "02 Check Up Pro (BASE+CARDIO)",
+      "03 Check Up Ultra (Completo)",
+      "04 Check Up (singolo test)",
+      "10 Personal - 60'",
+      "10 PERSONAL",
+      "10 PT",
+      "Ingresso giornaliero"
+    ],
+    "mw": [
+      "00 Checkup Compleanno (BIA+Mente+ Forza)",
+      "01 Checkup Base (BIA, Mobilità, Forza)",
+      "02 Checkup Pro (BIA, Mobilità, Forza, Cardio)",
+      "03 Checkup Ultra (tutti i test)",
+      "04 Checkup Singolo (BIA)",
+      "04 Checkup Singolo (Cardio)",
+      "04 Checkup Singolo (Equilibrio)",
+      "04 Checkup Singolo (Forza)",
+      "04 Checkup Singolo (Mente)",
+      "04 Checkup Singolo (Mobilità)",
+      "10 PT",
+      "10 Personal 60'",
+      "Ingresso giornaliero"
+    ]
+  }
+}
